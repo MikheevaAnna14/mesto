@@ -1,0 +1,32 @@
+.profile__info-name {
+  width: 87.5%;
+  max-width: 294px;
+  font-size: 42px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 48px;
+  align-self: start;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+ 
+.profile__info-name::-webkit-input-placeholder {
+  color: #fff;
+}
+.profile__info-name::-moz-placeholder {
+  color: #fff;
+}
+.profile__info-name::-ms-input-placeholder {
+  color: #fff;
+}
+.profile__info-name::placeholder {
+  color: #fff;
+}
+.profile__info-name::placeholder {
+  color: #fff;
+}   
+
+

@@ -1,0 +1,29 @@
+.profile__info-occupation {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 21.8px;
+  align-self: end;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.profile__info-occupation::-webkit-input-placeholder {
+  color: #fff;
+}
+.profile__info-occupation::-moz-placeholder {
+  color: #fff;
+}
+.profile__info-occupation::-ms-input-placeholder {
+  color: #fff;
+}
+.profile__info-occupation::placeholder {
+  color: #fff;
+}
+.profile__info-occupation::placeholder {
+  color: #fff;
+}   
