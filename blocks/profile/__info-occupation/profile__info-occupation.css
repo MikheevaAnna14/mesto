@@ -10,6 +10,9 @@
   margin: 0;
   padding: 0;
   border: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__info-occupation::-webkit-input-placeholder {

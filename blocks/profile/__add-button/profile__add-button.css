@@ -5,6 +5,7 @@
   box-sizing: border-box;
   border-radius: 2px;
   margin-left: auto;
+  padding: 0;
   background-color: #000;
 }
 

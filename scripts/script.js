@@ -17,7 +17,7 @@ popupCloseButton.addEventListener('click', closePopup);
 
 popup.addEventListener('click', function(event) {
   if (!event.defaultPrevented) {
-    closePopup()
+    closePopup();
   }
 });
 
@@ -29,12 +29,13 @@ let formElement = document.querySelector('.popup__container-info-button');
 let nameInput = document.querySelector('.popup__container-info-name');
 let jobInput = document.querySelector('.popup__container-info-occupation');
 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-let nameUser = document.querySelector('.profile__info-name');
-let occupationUser = document.querySelector('.profile__info-occupation');
-nameUser.setAttribute('value', nameInput.value);
-occupationUser.setAttribute('value', jobInput.value);
+function formSubmitHandler(evt) {
+  evt.preventDefault(); 
+  let nameUser = document.querySelector('.profile__info-name');  
+  let occupationUser = document.querySelector('.profile__info-occupation');
+  nameUser.setAttribute('value', nameInput.value);
+  occupationUser.setAttribute('value', jobInput.value);
+  closePopup();
 }
 
 formElement.addEventListener('click', formSubmitHandler); 
