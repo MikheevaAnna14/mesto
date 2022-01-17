@@ -1,0 +1,11 @@
+.element__like {
+  width: 22px;
+  height: 19px;
+  border: none;
+  box-sizing: border-box;
+  padding: 0;
+  position: absolute;
+  right: 15px;
+  bottom: 30px;
+  background-color: #fff;
+}
