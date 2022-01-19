@@ -12,21 +12,24 @@
   <div class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="логотип mesto" class="header__logo">
+      <div class="header__line"></div>
     </header>
 
-    <form class="profile">
+    <section class="profile">
       <div class="profile__avatar"></div>
-      <fieldset class="profile__info">
-        <button class="profile__info-edit-button">
-          <img src="./images/Vector.svg" class="profile__info-edit-button-vector" alt="иконка кнопки">
-        </button>
-        <input type="text" value="" placeholder="Жак-Ив Кусто" class="profile__info-name">
-        <input type="text" placeholder="Исследователь океана" class="profile__info-occupation">
-      </fieldset>
+      <div class="profile__info">
+        <div class="profile__info-edit">
+          <p class="profile__info-name">Жак-Ив Кусто</p>
+          <button class="profile__info-edit-button">
+            <img src="./images/Vector.svg" class="profile__info-edit-button-vector" alt="иконка кнопки">
+          </button>
+        </div>
+        <p class="profile__info-occupation">Исследователь океана</p>
+      </div>
       <button class="profile__add-button">
-        <img src="./images/Vector2.svg" class="profile__add-button-vector"> 
+        <img src="./images/Vector2.svg" class="profile__add-button-vector" alt="кнопка"> 
       </button>
-    </form>
+    </section>
 
     <main class="content">
       <div class="elements">
@@ -80,11 +83,11 @@
       </div>
     </main>
 
-    <form class="popup">
+    <div class="popup">
       <div class="popup__overlay"></div>
-      <div class="popup__container">
-        <button class="popup__close">
-          <img src="./images/Close Icon.svg" class="popup__close-icon" alt="иконка крестик">
+      <form class="popup__container">
+        <button type="button" class="popup__close">
+          <img src="./images/Close_Icon.svg" class="popup__close-icon" alt="иконка крестик">
         </button>
         <h2 class="popup__container-heading">Редактировать профиль</h2>
         <fieldset class="popup__container-info">
@@ -92,20 +95,13 @@
           <input type="text" name="occupation" value="Исследователь океана" class="popup__container-info-occupation">
         </fieldset>
         <button type="submit" class="popup__container-info-button">Сохранить</button>
-      </div>
-    </form>
+      </form>
+    </div>
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-
-
-  
-
-    
   </div>
-
-
   <script src="./scripts/script.js"></script>
 </body>
 </html>

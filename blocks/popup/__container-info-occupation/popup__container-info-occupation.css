@@ -7,22 +7,6 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  margin-top: 22px;
+  margin-top: 28px;
   padding-bottom: 10px;
 }
-
-.popup__container-info-occupation::-webkit-input-placeholder {
-  color: #000;
-}
-.popup__container-info-occupation::-moz-placeholder {
-  color: #000;
-}
-.popup__container-info-occupation::-ms-input-placeholder {
-  color: #000;
-}
-.popup__container-info-occupation::placeholder {
-  color: #000;
-}
-.popup__container-info-occupation::placeholder {
-  color: #000;
-}   

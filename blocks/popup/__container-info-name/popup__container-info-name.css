@@ -7,22 +7,14 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  margin-top: 53px;
+  margin-top: 47px;
   padding-bottom: 10px;
 }
 
-.popup__container-info-name::-webkit-input-placeholder {
-  color: #000;
+@media screen and (max-width: 600px) {
+  .popup__container-info-name {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 71px;
+  }
 }
-.popup__container-info-name::-moz-placeholder {
-  color: #000;
-}
-.popup__container-info-name::-ms-input-placeholder {
-  color: #000;
-}
-.popup__container-info-name::placeholder {
-  color: #000;
-}
-.popup__container-info-name::placeholder {
-  color: #000;
-}   

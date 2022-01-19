@@ -5,3 +5,18 @@
   gap: 20px 17px;
   padding-top: 50px;
 }
+
+@media screen and (max-width: 890px) {
+  .elements {
+    grid-template-columns: repeat(2, 282px);
+    grid-template-rows: repeat(3, 361px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .elements {
+    grid-template-columns: repeat(1, 282px);
+    grid-template-rows: repeat(6, 361px);
+    padding-top: 36px;
+  }
+}
