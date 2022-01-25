@@ -4,5 +4,6 @@
   border: none;
   border-radius: 10px;
   background-color: #fff;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }

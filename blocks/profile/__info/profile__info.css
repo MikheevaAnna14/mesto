@@ -1,6 +1,6 @@
 .profile__info {
   max-width: 370px;
-  height: 73px;
+  min-height: 73px;
   margin: 0;
   margin-left: 30px;
   display: flex;

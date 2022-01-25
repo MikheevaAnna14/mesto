@@ -1,11 +1,6 @@
 .element__name {
-  max-width: 200px;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  padding: 0;
-  padding-left: 21px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  display: flex;
+  width: 86%;
+  justify-content: space-between;
+  margin: auto;
 }
