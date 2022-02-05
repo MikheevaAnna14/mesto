@@ -12,11 +12,13 @@
   text-align: center;
   margin: 48px auto 37px;
   padding: 0;
+  transition: opacity .5s;
 }
 
 .popup__container-info-button:hover {
   opacity: 0.8;
   cursor: pointer;
+  transition: opacity .5s;
 }
 
 @media screen and (max-width: 600px) {

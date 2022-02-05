@@ -3,7 +3,8 @@
   min-height: 361px;
   border: none;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
+  position: relative;
 }

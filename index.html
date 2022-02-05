@@ -26,73 +26,29 @@
           </div>
           <p class="profile__info-occupation">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-button">
+        <button type="button" id="button-addcard" class="profile__add-button">
           <img src="./images/Vector2.svg" class="profile__add-button-vector" alt="кнопка"> 
         </button>
       </section>
 
       <div class="elements">
-        <div class="element">
-          <img src="./images/Akhun.jpg" class="element__mask" alt="гора ахун">
-          <div class="element__name">
-            <h2 class="element__title">Гора Ахун</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div> 
-        </div>
-
-        <div class="element">
-          <img src="./images/Elbrus.jpg" class="element__mask" alt="гора эльбрус">
-          <div class="element__name">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div>  
-        </div>
-
-        <div class="element">
-          <img src="./images/dombai.jpg" class="element__mask" alt="домбай">
-          <div class="element__name">
-            <h2 class="element__title">Домбай</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div>  
-        </div>
-
-        <div class="element">
-          <img src="./images/crimea.jpg" class="element__mask" alt="крым">
-          <div class="element__name">
-            <h2 class="element__title">Крым</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/st-petersburg.jpg" class="element__mask" alt="санкт-петербург">
-          <div class="element__name">
-            <h2 class="element__title">Санкт-Петербург</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div>        
-        </div>
-
-        <div class="element">
-          <img src="./images/karachaevo-cherkessiya.jpg" class="element__mask" alt="карачаево-черкессия">
-          <div class="element__name">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button type="button" class="element__like">
-              <img src="./images/Button_like.svg" alt="кнопка лайк">
-            </button>
-          </div>        
-        </div>
       </div>
     </main>
+
+    <template id="element-template">
+      <div class="element">
+        <button type="button" class="element__button-delete">
+          <img src="./images/Urna.png" alt="кнопка удаления карточки">
+        </button>
+        <img src="" class="element__mask" alt="">
+        <div class="element__name">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__like">
+            <img src="./images/Button_like.svg" alt="кнопка лайк">
+          </button>
+        </div>
+      </div>
+    </template>
 
     <div class="popup">
       <div class="popup__overlay"></div>
@@ -107,6 +63,32 @@
           <button type="submit" class="popup__container-info-button">Сохранить</button>
         </form>
       </div>
+    </div>
+
+    <div class="popup" id="popup-addcard">
+      <div class="popup__overlay"></div>
+      <div class="popup__container" id="popupAddCardContainer">
+        <button type="button" id="popup-addcard-closebutton"  class="popup__close">
+          <img src="./images/Close_Icon.svg" class="popup__close-icon" alt="иконка крестик">
+        </button>
+        <form class="popup__container-info" name="regform">
+          <h2 class="popup__container-heading">Новое место</h2>
+          <input id="popup-title" type="text" name="title" placeholder="Название"  class="popup__container-input popup__container-input_type_name">
+          <input id="popup-link" type="text" name="link" placeholder="Ссылка на картинку" class="popup__container-input popup__container-input_type_occupation">
+          <button type="submit" class="popup__container-info-button">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-photo">
+      <div class="popup__overlay popup__overlay_type_dark"></div>
+      <figure class="popup__figure" id="popap-photocontainer">
+        <button type="button" id="photopopup-closebutton"  class="popup__close">
+          <img src="./images/Close_Icon.svg" class="popup__close-icon" alt="иконка крестик">
+        </button>
+        <img src="" class="popup__picture" alt="">
+        <figcaption class="popup__figcaption" id="popup__figcaption"></figcaption>
+      </figure>
     </div>
 
     <footer class="footer">
