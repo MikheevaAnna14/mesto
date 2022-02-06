@@ -8,7 +8,7 @@
   <title>Mesto</title>
   <meta name="author" content="Михеева Анна">
 </head>
-<body>
+<body class="body">
   <div class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="логотип mesto" class="header__logo">
@@ -67,11 +67,11 @@
 
     <div class="popup" id="popup-addcard">
       <div class="popup__overlay"></div>
-      <div class="popup__container" id="popupAddCardContainer">
+      <div class="popup__container">
         <button type="button" id="popup-addcard-closebutton"  class="popup__close">
           <img src="./images/Close_Icon.svg" class="popup__close-icon" alt="иконка крестик">
         </button>
-        <form class="popup__container-info" name="regform">
+        <form class="popup__container-info" id="popupAddCardContainer" name="regform">
           <h2 class="popup__container-heading">Новое место</h2>
           <input id="popup-title" type="text" name="title" placeholder="Название"  class="popup__container-input popup__container-input_type_name">
           <input id="popup-link" type="text" name="link" placeholder="Ссылка на картинку" class="popup__container-input popup__container-input_type_occupation">
@@ -86,7 +86,8 @@
         <button type="button" id="photopopup-closebutton"  class="popup__close">
           <img src="./images/Close_Icon.svg" class="popup__close-icon" alt="иконка крестик">
         </button>
-        <img src="x" class="popup__picture" alt="">
+        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" 
+        class="popup__picture" alt="">
         <figcaption class="popup__figcaption" id="popup__figcaption"></figcaption>
       </figure>
     </div>
