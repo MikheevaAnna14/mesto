@@ -1,7 +1,7 @@
 const popupOpenButton = document.querySelector('.profile__info-edit-button');
 const popupCloseButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
-const popupContainer = document.querySelector('.popup__container-info');
+const popupForm = document.querySelector('.popup__container-info');
 const formElement = document.querySelector('.popup__container-info-button');
 const nameInput = document.querySelector('.popup__container-input_type_name');
 const jobInput = document.querySelector('.popup__container-input_type_occupation');
@@ -10,7 +10,7 @@ const occupationUser = document.querySelector('.profile__info-occupation');
 const popupAddCard = document.querySelector('#popup-addcard');
 const popupAddCardOpenButton = document.querySelector('#button-addcard');
 const popupAddCardCloseButton = document.querySelector('#popup-addcard-closebutton');
-const popupAddCardContainer = document.querySelector('#popupAddCardContainer');
+const popupAddCardForm = document.querySelector('#popupAddCardForm');
 const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#element-template').content;
 const titleInput = document.querySelector('#popup-title');
@@ -18,7 +18,8 @@ const linkInput = document.querySelector('#popup-link');
 const photoPopup = document.querySelector('#popup-photo');
 const photoPopupContainer = document.querySelector('#popap-photocontainer');
 const photoPopupCloseButton = document.querySelector('#photopopup-closebutton');
-const popupFigcaption = document.querySelector('#popup__figcaption');
+const photoPopupPicture = document.querySelector('.popup__picture');
+const photoPopupFigcaption = document.querySelector('.popup__figcaption');
 
 const initialCards = [
   {
@@ -53,9 +54,9 @@ function openPopups(elem) {
 
 // заполняем поля попапа текущими данными пользователя
 function fillPopupProfile() {
-  openPopups(popup);
   nameInput.value = nameUser.textContent;
   jobInput.value = occupationUser.textContent;
+  openPopups(popup);
 }
 
 function closePopups(elem) {
@@ -105,26 +106,30 @@ function likeCard(event) {
 }
 
 function handlePhotoPopup(link, alt, title) {
-  const photoPopupPicture = photoPopup.querySelector('.popup__picture');
   photoPopupPicture.src = link;
   photoPopupPicture.alt = alt;
-  photoPopup.querySelector('.popup__figcaption').textContent = title;
+  photoPopupFigcaption.textContent = title;
   openPopups(photoPopup);
 }
 
 popupOpenButton.addEventListener('click', fillPopupProfile);
 popupCloseButton.addEventListener('click', () => closePopups(popup));
-popupContainer.addEventListener('submit', savePopupProtile);
 popupAddCardOpenButton.addEventListener('click', () => openPopups(popupAddCard));
 popupAddCardCloseButton.addEventListener('click', clearPopupAddCard);
-popupAddCardContainer.addEventListener('submit', addNewCard);
 photoPopupCloseButton.addEventListener('click', () => closePopups(photoPopup));
+
+// Переименовала переменныe popupContainer => popupForm, popupAddCardContainer => popupAddCardForm 
+// после первой итерации привязала их к тегу form, возможно я неправильно понимаю, что требуется сделать
+popupForm.addEventListener('submit', savePopupProtile); 
+popupAddCardForm.addEventListener('submit', addNewCard);
+
 
 initialCards.forEach(function(item) {
   const newCard = createCard(item.link, item.name, item.name)
   cards.appendChild(newCard);
 });
   
+
 
 
 
