@@ -117,9 +117,6 @@ popupCloseButton.addEventListener('click', () => closePopups(popup));
 popupAddCardOpenButton.addEventListener('click', () => openPopups(popupAddCard));
 popupAddCardCloseButton.addEventListener('click', clearPopupAddCard);
 photoPopupCloseButton.addEventListener('click', () => closePopups(photoPopup));
-
-// Переименовала переменныe popupContainer => popupForm, popupAddCardContainer => popupAddCardForm 
-// после первой итерации привязала их к тегу form, возможно я неправильно понимаю, что требуется сделать
 popupForm.addEventListener('submit', savePopupProtile); 
 popupAddCardForm.addEventListener('submit', addNewCard);
 
