@@ -10,6 +10,7 @@ const occupationUser = document.querySelector('.profile__info-occupation');
 const popupAddCard = document.querySelector('#popup-addcard');
 const popupAddCardOpenButton = document.querySelector('#button-addcard');
 const popupAddCardCloseButton = document.querySelector('#popup-addcard-closebutton');
+const popupAddCardSaveButton = document.querySelector('.popup__container-addcard-button');
 const popupAddCardForm = document.querySelector('#popupAddCardForm');
 const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#element-template').content;
@@ -49,8 +50,9 @@ const initialCards = [
 ];
 
 function openPopups(elem) {
-  elem.classList.add('popup_opened');
-}
+    elem.classList.add('popup_opened');
+    document.addEventListener('keydown', escapePopup);
+  }
 
 // заполняем поля попапа текущими данными пользователя
 function fillPopupProfile() {
@@ -61,6 +63,7 @@ function fillPopupProfile() {
 
 function closePopups(elem) {
   elem.classList.remove('popup_opened');
+  document.removeEventListener('keydown', escapePopup);
 }
 
 // сохраняем данные, внесенные в поля формы
@@ -73,6 +76,7 @@ function savePopupProtile(event) {
 
 // очищаем форму добавления карточек перед закрытием попапа
 function clearPopupAddCard() {
+  popupAddCardSaveButton.setAttribute('disabled', true);
   titleInput.value = '';
   linkInput.value = '';
   closePopups(popupAddCard);
@@ -112,6 +116,20 @@ function handlePhotoPopup(link, alt, title) {
   openPopups(photoPopup);
 }
 
+function closeOverlay (event) {
+  if (event.target.classList.contains('popup__overlay')) {
+    closePopups(event.currentTarget);
+  }
+}
+
+function escapePopup (event) {
+  const elem = document.querySelector('.popup_opened');
+  if(event.key === 'Escape') {
+    closePopups(elem);
+  }
+}
+
+
 popupOpenButton.addEventListener('click', fillPopupProfile);
 popupCloseButton.addEventListener('click', () => closePopups(popup));
 popupAddCardOpenButton.addEventListener('click', () => openPopups(popupAddCard));
@@ -119,19 +137,13 @@ popupAddCardCloseButton.addEventListener('click', clearPopupAddCard);
 photoPopupCloseButton.addEventListener('click', () => closePopups(photoPopup));
 popupForm.addEventListener('submit', savePopupProtile); 
 popupAddCardForm.addEventListener('submit', addNewCard);
+popup.addEventListener('click', (event) => closeOverlay(event));
+popupAddCard.addEventListener('click', (event) => closeOverlay(event));
+photoPopup.addEventListener('click', (event) => closeOverlay(event));
+
 
 
 initialCards.forEach(function(item) {
   const newCard = createCard(item.link, item.name, item.name)
   cards.appendChild(newCard);
 });
-  
-
-
-
-
-// popup.addEventListener('click', function(event) {
-//   if (!event.defaultPrevented) {
-//     closePopup();
-//   }
-// });

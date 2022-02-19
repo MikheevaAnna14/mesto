@@ -21,6 +21,13 @@
   transition: opacity .5s;
 }
 
+.popup__container-info-button:disabled {
+  border: 1px solid #c5c5c5;
+  cursor: default;
+  background-color: #fff;
+  color: #c5c5c5;
+}
+
 @media screen and (max-width: 600px) {
   .popup__container-info-button {
     width: 238px;
