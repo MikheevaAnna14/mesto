@@ -3,6 +3,7 @@
   grid-template-columns: repeat(3, 282px);
   gap: 20px 17px;
   padding-top: 50px;
+  min-height: 30vh;
 }
 
 @media screen and (max-width: 890px) {

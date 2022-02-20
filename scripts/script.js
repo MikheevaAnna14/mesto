@@ -10,7 +10,6 @@ const occupationUser = document.querySelector('.profile__info-occupation');
 const popupAddCard = document.querySelector('#popup-addcard');
 const popupAddCardOpenButton = document.querySelector('#button-addcard');
 const popupAddCardCloseButton = document.querySelector('#popup-addcard-closebutton');
-const popupAddCardSaveButton = document.querySelector('.popup__container-addcard-button');
 const popupAddCardForm = document.querySelector('#popupAddCardForm');
 const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#element-template').content;
@@ -76,10 +75,7 @@ function savePopupProtile(event) {
 
 // очищаем форму добавления карточек перед закрытием попапа
 function clearPopupAddCard() {
-  popupAddCardSaveButton.setAttribute('disabled', true);
-  titleInput.value = '';
-  linkInput.value = '';
-  closePopups(popupAddCard);
+  popupAddCardForm.reset();
 }
 
 function createCard(link, alt, title) {
@@ -99,6 +95,7 @@ function addNewCard(evt) {
   const newCard = createCard(linkInput.value, titleInput.value, titleInput.value);
   cards.prepend(newCard);
   clearPopupAddCard();
+  closePopups(popupAddCard);
 }
 
 function deleteCard(event) {
@@ -123,8 +120,8 @@ function closeOverlay (event) {
 }
 
 function escapePopup (event) {
-  const elem = document.querySelector('.popup_opened');
   if(event.key === 'Escape') {
+    const elem = document.querySelector('.popup_opened');
     closePopups(elem);
   }
 }
@@ -133,7 +130,7 @@ function escapePopup (event) {
 popupOpenButton.addEventListener('click', fillPopupProfile);
 popupCloseButton.addEventListener('click', () => closePopups(popup));
 popupAddCardOpenButton.addEventListener('click', () => openPopups(popupAddCard));
-popupAddCardCloseButton.addEventListener('click', clearPopupAddCard);
+popupAddCardCloseButton.addEventListener('click', () => closePopups(popupAddCard));
 photoPopupCloseButton.addEventListener('click', () => closePopups(photoPopup));
 popupForm.addEventListener('submit', savePopupProtile); 
 popupAddCardForm.addEventListener('submit', addNewCard);

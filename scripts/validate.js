@@ -2,10 +2,17 @@ const conf = {
   formSelector: '.popup__container-info',
   inputSelector: '.popup__container-input',
   submitButtonSelector: '.popup__container-info-button',
-  // inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__container-input_type_error',
-  errorClass: 'popup__container-input-error_active'
+  errorClass: 'popup__container-input-error_active',
 }
+
+const popupAddCardbutton = document.querySelector('.profile__add-button');
+const buttonAddCard = document.querySelector('.popup__container-addcard-button');
+
+// функция блокировки кнопки открытия попапа
+function disableBatton (btn) {
+  btn.setAttribute('disabled', true);
+  };
 
 // функция, которая принимает массив форм 
 function enableValidation (conf) {
@@ -23,7 +30,6 @@ function setInputHandler (conf, formItem) {
   const inputArray = formItem.querySelectorAll(conf.inputSelector);
   const button = formItem.querySelector(conf.submitButtonSelector);
   toggleButton (inputArray, button);
-  // button.setAttribute('disabled', true);
   inputArray.forEach((inputItem) => {
     inputItem.addEventListener('input', (event) => {
       // event.preventDefault();
@@ -34,7 +40,6 @@ function setInputHandler (conf, formItem) {
 }
 
 function isValid(conf, formItem, inputItem) {
-  console.log(inputItem);
   if (!inputItem.validity.valid) {
         showInputError(conf, formItem, inputItem, inputItem.validationMessage);
       } else{
@@ -44,8 +49,6 @@ function isValid(conf, formItem, inputItem) {
 
 // функция, добавляющая класс с ошибкой
 function showInputError (conf, formItem, inputItem, errorMessage) {
-  console.log('Ошибка')
-  // const secondClass = inputItem.className.split(' ')[1];
   const errorElement = formItem.querySelector(`.${inputItem.id}-error`);
   inputItem.classList.add(conf.inputErrorClass);
   errorElement.textContent = errorMessage;
@@ -54,7 +57,6 @@ function showInputError (conf, formItem, inputItem, errorMessage) {
 
 // функция, удаляющая класс с ошибкой
 function hideInputError (conf, formItem, inputItem) {
-  console.log(`.${inputItem.id}-error`)
   const errorElement = formItem.querySelector(`.${inputItem.id}-error`);
   inputItem.classList.remove(conf.inputErrorClass);
   errorElement.classList.remove(conf.errorClass);
@@ -72,10 +74,21 @@ function toggleButton (inputArray, button) {
 
 function hasInvalidInput (inputArray) {
   InputList = Array.prototype.slice.call(inputArray);
-  console.log(InputList);
   return InputList.some((inputItem) => {
     return !inputItem.validity.valid;
   });
 }
 
+// слушатель кнопки открытия попапа добавления карточек
+popupAddCardbutton.addEventListener('click', () => disableBatton(buttonAddCard));
+
 enableValidation(conf);
+
+
+
+
+
+
+
+
+
