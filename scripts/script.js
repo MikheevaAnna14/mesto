@@ -1,3 +1,4 @@
+import { initialCards } from "./initialCards.js";
 import { Card } from "./card.js";
 import { FormValidator} from "./FormValidator.js";
 
@@ -20,33 +21,6 @@ const photoPopup = document.querySelector('#popup-photo');
 const photoPopupCloseButton = document.querySelector('#photopopup-closebutton');
 const photoPopupPicture = document.querySelector('.popup__picture');
 const photoPopupFigcaption = document.querySelector('.popup__figcaption');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const conf = {
     formSelector: '.popup__container-info',
@@ -100,14 +74,18 @@ function handlePhotoPopup(link, name) {
   openPopups(photoPopup);
 }
 
+function generateCard(item) {
+  const newCard = new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)); 
+  const card = newCard.createCard();
+  cards.prepend(card);
+}
+
 function addNewCard() {
   const item = {
     link: linkInput.value,
     name: titleInput.value,
   };
-  const newCard = new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)); 
-  const card = newCard.createCard();
-  cards.prepend(card);
+  generateCard(item);
   clearPopupAddCard();
   closePopups(popupAddCard);
 }
@@ -140,9 +118,5 @@ popup.addEventListener('click', (event) => closeOverlay(event));
 popupAddCard.addEventListener('click', (event) => closeOverlay(event));
 photoPopup.addEventListener('click', (event) => closeOverlay(event));
 
-initialCards.forEach(function(item) {
-  const newCard = new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)); 
-  const card = newCard.createCard();
-  cards.appendChild(card);
-});
+initialCards.forEach(generateCard);
 
