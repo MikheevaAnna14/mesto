@@ -74,18 +74,28 @@ function handlePhotoPopup(link, name) {
   openPopups(photoPopup);
 }
 
+// возвращаем готовую карточку
 function generateCard(item) {
-  const newCard = new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)); 
-  const card = newCard.createCard();
-  cards.prepend(card);
+    return new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)).createCard(); 
+  }
+
+// функция добавления готовой карточки в DOM
+function embedCard(item) {                    
+  cards.prepend(generateCard(item));
 }
 
-function addNewCard() {
-  const item = {
+// добавляем карточки из массива
+function renderCards() {
+  initialCards.forEach(embedCard);
+}
+
+// функция добавления новых карточек
+function addNewCard() {          
+  const newItem = {
     link: linkInput.value,
     name: titleInput.value,
   };
-  generateCard(item);
+  embedCard(newItem);
   clearPopupAddCard();
   closePopups(popupAddCard);
 }
@@ -118,5 +128,6 @@ popup.addEventListener('click', (event) => closeOverlay(event));
 popupAddCard.addEventListener('click', (event) => closeOverlay(event));
 photoPopup.addEventListener('click', (event) => closeOverlay(event));
 
-initialCards.forEach(generateCard);
+renderCards();
+
 
