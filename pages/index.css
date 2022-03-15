@@ -26,10 +26,7 @@
 @import url(../blocks/popup/__container-input/popup__container-input.css);
 @import url(../blocks/popup/__container-input-error/popup__container-input-error.css);
 @import url(../blocks/popup/__container-input/_type/_error/popup__container-input_type_error.css);
-@import url(../blocks/popup/__container-input/_type/_name/popup__container-input_type_name.css);
-@import url(../blocks/popup/__container-input/_type/_occupation/popup__container-input_type_occupation.css);
 @import url(../blocks/popup/__container-input-error/popup__container-input-error.css);
-@import url(../blocks/popup/__container-input-error/_active/popup__container-input-error_active.css);
 @import url(../blocks/popup/__container-info-button/popup__container-info-button.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__figcaption/popup__figcaption.css);
