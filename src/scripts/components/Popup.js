@@ -16,18 +16,14 @@ export class Popup {
 
     _handleEscClose(event) {
       if(event.key === 'Escape') {
-        // const elem = document.querySelector('.popup_opened');
-        // closePopups(elem);
         this.close()
       }
     }
 
     setEventListeners() {
-      const closeButton = this._popup.querySelector('.popup__close');
-      closeButton.addEventListener('click', () => this.close());
       this._popup.addEventListener('click', (event) => {
-        if (event.target.classList.contains('popup__overlay')) {
-          //closePopups(event.currentTarget);
+        console.log(event);
+        if (event.target.classList.contains('popup__overlay') || event.target.classList.contains('popup__close-icon')) {
           this.close();
         }
       });

@@ -1,10 +1,10 @@
-import { initialCards } from "./initialCards.js";
-import { Card } from "./components/card.js";
-import { FormValidator} from "./components/FormValidator.js";
-import { Section  } from "./components/Section.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { UserInfo } from "./components/UserInfo.js";
+import { initialCards } from "../scripts/initialCards.js";
+import { Card } from "../scripts/components/Card.js";
+import { FormValidator} from "../scripts/components/FormValidator.js";
+import { Section  } from "../scripts/components/Section.js";
+import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
+import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
+import { UserInfo } from "../scripts/components/UserInfo.js";
 
 import '../pages/index.css';
 
@@ -25,25 +25,25 @@ const conf = {
 
 const popupProfileFormValidation = new FormValidator (conf, popupForm);
 const popupAddCardFormValidation = new FormValidator (conf, popupAddCardForm);
-const section = new Section({ items: initialCards, renderer: generateCard }, '.elements');
+const section = new Section({ items: initialCards, renderer: embedCard }, '.elements');
 const imagePopup = new PopupWithImage('#popup-photo');
 const profilePopup = new PopupWithForm('#popup-profile', savePopupProtile);
-const addCardPopup = new PopupWithForm('#popup-addcard', addNewCard);
+const cardAddPopup = new PopupWithForm('#popup-addcard', addNewCard);
 const userInfo = new UserInfo({ profileNameSelector: '.profile__info-name', 
   profileOccupationSelector: '.profile__info-occupation' });
 
 popupProfileFormValidation.enableValidation();
 popupAddCardFormValidation.enableValidation();
-section.renderItems();
 imagePopup.setEventListeners();
 profilePopup.setEventListeners();
-addCardPopup.setEventListeners();
+cardAddPopup.setEventListeners();
 
 // заполняем поля попапа текущими данными пользователя
 function fillPopupProfile() {
   popupProfileFormValidation.resetErrors();
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().occupation;
+  const info = userInfo.getUserInfo();
+  nameInput.value = info.name;
+  jobInput.value = info.occupation;
   profilePopup.open();
 }
 
@@ -58,6 +58,11 @@ function handlePhotoPopup(link, name) {
   imagePopup.open(link, name);
 }
 
+// функция добавления готовой карточки в DOM 
+function embedCard(item, container) {
+  container.prepend(generateCard(item));  
+}
+
 // возвращаем готовую карточку
 function generateCard(item) {
   return new Card(item, '#element-template', () => handlePhotoPopup(item.link, item.name)).createCard(); 
@@ -70,7 +75,7 @@ function addNewCard(item) {
     name: item['title']
   };
   section.addItem(generateCard(newItem));
-  addCardPopup.close();
+  cardAddPopup.close();
 }
 
 popupOpenButton.addEventListener('click', fillPopupProfile);
@@ -78,5 +83,5 @@ popupOpenButton.addEventListener('click', fillPopupProfile);
 popupAddCardOpenButton.addEventListener('click', () => {
   popupAddCardFormValidation.resetErrors();  
   popupAddCardFormValidation.disableBatton(); 
-  addCardPopup.open();
+  cardAddPopup.open();
 });
