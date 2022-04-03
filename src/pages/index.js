@@ -59,8 +59,10 @@ function handlePhotoPopup(link, name) {
 }
 
 // функция добавления готовой карточки в DOM 
-function embedCard(item, container) {
-  container.prepend(generateCard(item));  
+function embedCard(item) {
+  // если вместо this использовать section.addItem как в addNewCard,
+  // то в при создании section появляется циклическая зависимость
+  this.addItem(generateCard(item));  
 }
 
 // возвращаем готовую карточку
