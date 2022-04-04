@@ -25,7 +25,7 @@ const conf = {
 
 const popupProfileFormValidation = new FormValidator (conf, popupForm);
 const popupAddCardFormValidation = new FormValidator (conf, popupAddCardForm);
-const section = new Section({ items: initialCards, renderer: embedCard }, '.elements');
+const section = new Section({ renderer: embedCard }, '.elements');
 const imagePopup = new PopupWithImage('#popup-photo');
 const profilePopup = new PopupWithForm('#popup-profile', savePopupProtile);
 const cardAddPopup = new PopupWithForm('#popup-addcard', addNewCard);
@@ -37,6 +37,7 @@ popupAddCardFormValidation.enableValidation();
 imagePopup.setEventListeners();
 profilePopup.setEventListeners();
 cardAddPopup.setEventListeners();
+section.renderItems(initialCards);
 
 // заполняем поля попапа текущими данными пользователя
 function fillPopupProfile() {
@@ -60,9 +61,7 @@ function handlePhotoPopup(link, name) {
 
 // функция добавления готовой карточки в DOM 
 function embedCard(item) {
-  // если вместо this использовать section.addItem как в addNewCard,
-  // то в при создании section появляется циклическая зависимость
-  this.addItem(generateCard(item));  
+  section.addItem(generateCard(item));  
 }
 
 // возвращаем готовую карточку
