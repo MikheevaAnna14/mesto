@@ -46,9 +46,10 @@ export class FormValidator {
   }
 
   _setInputHandler () {
-    this._inputArray = this._form.querySelectorAll(this._settings.inputSelector);
+    // this._inputArray = this._form.querySelectorAll(this._settings.inputSelector);
+    this._inputArray = this._form.querySelectorAll(this._settings.inputSelector);  //////  Array.from???
     this._button = this._form.querySelector(this._settings.submitButtonSelector);
-    this._toggleButton ();
+    this._toggleButton();
     this._inputArray.forEach((inputItem) => {
       inputItem.addEventListener('input', () => {
         this._isValid(inputItem);
@@ -73,3 +74,4 @@ export class FormValidator {
   }
 
 }
+

@@ -16,15 +16,17 @@
 
     <main class="content">
       <section class="profile">
-        <img src="<%=require('./images/avatar.jpg')%>" class="profile__avatar" alt="аватар">
+        <button class="profile__avatar-edit">
+          <img src="<%=require('./images/avatar.jpg')%>" class="profile__avatar" alt="аватар">  
+        </button>
         <div class="profile__info">
           <div class="profile__info-edit">
-            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+            <h1 class="profile__info-name"></h1>
             <button type="button" class="profile__info-edit-button">
               <img src="<%=require('./images/Vector.svg')%>" class="profile__info-edit-button-vector" alt="иконка кнопки">
             </button>
           </div>
-          <p class="profile__info-occupation">Исследователь океана</p>
+          <p class="profile__info-occupation"></p>
         </div>
         <button type="button" id="button-addcard" class="profile__add-button">
           <img src="<%=require('./images/Vector2.svg')%>" class="profile__add-button-vector" alt="кнопка"> 
@@ -43,9 +45,12 @@
         <img src="x" class="element__mask" alt="">
         <div class="element__name">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like">
-            <img src="<%=require('./images/Button_like.svg')%>" alt="кнопка лайк">
-          </button>
+          <div class="element__likes">
+            <button type="button" class="element__like">
+              <img src="<%=require('./images/Button_like.svg')%>" alt="кнопка лайк">
+            </button>
+            <span class="element__like-counter"></span>
+          </div>
         </div>
       </div>
     </template>
@@ -98,6 +103,35 @@
         class="popup__picture" alt="">
         <figcaption class="popup__figcaption"></figcaption>
       </figure>
+    </div>
+
+    <div class="popup" id="popup-delete">
+      <div class="popup__overlay"></div>
+      <div class="popup__container popup__container-delete">
+        <form class="popup__container-info" id="popupDelete" name="deleteForm" novalidate>
+          <button type="button" class="popup__close">
+            <img src="<%=require('./images/Close_Icon.svg')%>" class="popup__close-icon" alt="иконка крестик">
+          </button>
+          <h2 class="popup__container-heading">Вы уверены?</h2>
+          <button type="submit" class="popup__container-info-button popup__button-delete-popup">Да</button>
+          </form>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-avatar">
+      <div class="popup__overlay"></div>
+      <div class="popup__container popup__container-avatar">
+        <button type="button" class="popup__close">
+          <img src="<%=require('./images/Close_Icon.svg')%>" class="popup__close-icon" alt="иконка крестик">
+        </button>
+        <form class="popup__container-info" id="popupAvatar" name="formAvatar" novalidate>
+          <h2 class="popup__container-heading">Обновить аватар</h2>
+          <input id="popup-avatar" type="url" name="avatar" placeholder="Ссылка на аватар"
+            class="popup__container-input popup__container-input_type_link" required>
+          <span class="popup__container-input-error popup-avatar-error"></span>
+          <button type="submit" class="popup__container-info-button">Сохранить</button>
+        </form>
+      </div>
     </div>
 
     <footer class="footer">
