@@ -41,7 +41,7 @@ const userInfo = new UserInfo({
  });
 
 const confirmationPopup = new PopupWithConfirmation('#popup-delete');
-const avatarEditPopup = new PopupWithForm('#popup-avatar', editAvatar);
+const avatarEditPopup = new PopupWithForm('#popup-avatar-edit', editAvatar);  
 
 let userId = "";
 
