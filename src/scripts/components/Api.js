@@ -4,20 +4,26 @@ class Api {
     this._baseUrl = baseUrl;
   }
 
+  _checkResponse(res) {
+    if(res.ok) {
+      return res.json()
+    } else {
+      return Promise.reject(res.status)
+    }
+  }
+
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   redactProfile(name, about) {
@@ -29,8 +35,7 @@ class Api {
         about
       })
     })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   addCard(name, link) {
@@ -42,8 +47,7 @@ class Api {
         link
       })
     })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   deleteCard(cardId) {
@@ -51,8 +55,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
       })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   addLike(cardId) {
@@ -60,8 +63,7 @@ class Api {
       method: 'PUT',
       headers: this._headers
       })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
   
   deleteLike(cardId) {
@@ -69,8 +71,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
       })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
 
   editAvatar({ avatar }) {
@@ -81,12 +82,10 @@ class Api {
         avatar
       })
       })
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
+    .then(this._checkResponse)
   }
-
-
 };
+
 export const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39',
   headers: {

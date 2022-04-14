@@ -9,27 +9,21 @@ import { api } from "../scripts/components/Api.js";
 
 import '../pages/index.css';
 
-const popupOpenButton = document.querySelector('.profile__info-edit-button');
-const popupForm = document.querySelector('#popupProfileForm');
-const nameInput = document.querySelector('.popup__container-input_type_name');
-const jobInput = document.querySelector('.popup__container-input_type_occupation');
-const popupAddCardOpenButton = document.querySelector('.profile__add-button');
-const popupAddCardForm = document.querySelector('#popupAddCardForm');
-const popupAvatarOpenButton = document.querySelector('.profile__avatar-edit');
-const popupAvatarFofm = document.querySelector('#popupAvatar');
-
-const conf = {
-    formSelector: '.popup__container-info',
-    inputSelector: '.popup__container-input',
-    submitButtonSelector: '.popup__container-info-button',
-    inputErrorClass: 'popup__container-input_type_error',
-    errorClass: 'popup__container-input-error_active',
-  }
+import {
+  popupOpenButton,
+  popupForm,
+  nameInput,
+  jobInput,
+  popupAddCardOpenButton,
+  popupAddCardForm,
+  popupAvatarOpenButton,
+  popupAvatarFofm,
+  conf
+} from "../scripts/utils/constants.js";
 
 const popupProfileFormValidation = new FormValidator (conf, popupForm);
 const popupAddCardFormValidation = new FormValidator (conf, popupAddCardForm);
 const popupAvatarFormValidation = new FormValidator (conf, popupAvatarFofm);
-
 const section = new Section(embedCard, '.elements');
 const imagePopup = new PopupWithImage('#popup-photo');
 const profilePopup = new PopupWithForm('#popup-profile', savePopupProtile);
@@ -38,8 +32,7 @@ const userInfo = new UserInfo({
   profileNameSelector: '.profile__info-name', 
   profileOccupationSelector: '.profile__info-occupation',
   avatarSelector: '.profile__avatar',
- });
-
+  });
 const confirmationPopup = new PopupWithConfirmation('#popup-delete');
 const avatarEditPopup = new PopupWithForm('#popup-avatar-edit', editAvatar);  
 
@@ -79,11 +72,11 @@ function savePopupProtile(item) {
   profilePopup.setButtonText('Сохранение...', 'Сохранить', true);
   api.redactProfile(name, occupation)
     .then((res) => {
-      userInfo.setUserInfo(res.name, res.about)
+      userInfo.setUserInfo(res.name, res.about);
+      profilePopup.close();
     })
     .catch(err => console.log("Не удалось изменить данные профиля:", err))
     .finally(() => profilePopup.setButtonText('Сохранение...', 'Сохранить', false))
-  profilePopup.close();
 }
 
 // функция удаления карточки
